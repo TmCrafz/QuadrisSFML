@@ -1,10 +1,11 @@
 CC=g++
 CFLAGS=-g -std=c++11 -Wall
+LIBS=-lsfml-graphics -lsfml-window -lsfml-system
 
 all: quadris
 
 quadris: main.o Game.o Drawable.o Stone.o FallenStone.o PointF.o InputHelper.o ScreenBuffer.o Screen.o ScoreScreen.o  MenuMain.o MenuSettings.o
-	$(CC) $(CFLAGS) main.o Game.o Drawable.o Stone.o FallenStone.o PointF.o InputHelper.o ScreenBuffer.o Screen.o MenuMain.o MenuSettings.o ScoreScreen.o -o quadris.o
+	$(CC) $(CFLAGS) main.o Game.o Drawable.o Stone.o FallenStone.o PointF.o InputHelper.o ScreenBuffer.o Screen.o MenuMain.o MenuSettings.o ScoreScreen.o -o quadris.o $(LIBS) 
 
 main.o: main.cpp MenuMain.h Game.h InputHelper.h
 	$(CC) $(CFLAGS) -c main.cpp -o main.o
