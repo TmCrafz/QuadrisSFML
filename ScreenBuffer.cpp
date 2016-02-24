@@ -71,7 +71,7 @@ void ScreenBuffer::drawToScreen()
 {
 	m_window.clear();
 	m_window.display();
-	/*
+	
 	for (int y = 0; y != m_BufferHeight; y++)
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
@@ -80,7 +80,7 @@ void ScreenBuffer::drawToScreen()
 		}	
 		cout << endl;
 	}
-	*/
+	
 }
 
 bool ScreenBuffer::isInBufferArea(const int X, const int Y) const

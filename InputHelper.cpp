@@ -10,33 +10,30 @@ using namespace std;
 
 int InputHelper::isKeyPressed()
 {
-	struct termios term, oterm;
-	int fd = 0;
-	int c = 0;
-	tcgetattr(fd, &oterm);
-	memcpy(&term, &oterm, sizeof(term));
-	term.c_lflag = term.c_lflag & (!ICANON);
-	term.c_cc[VMIN] = 0;
-	term.c_cc[VTIME] = 1;
-	tcsetattr(fd, TCSANOW, &term);
-	c = getchar();
-	tcsetattr(fd, TCSANOW, &oterm);
-	if (c != -1)
-		ungetc(c, stdin);
-	return ((c != -1) ? 1 : 0);
+	return 1;
 }
 
-int InputHelper::getInputchar()
+// TMP
+int InputHelper::getInputChar()
 {
-	static int ch = -1, fd = 0;
-	struct termios neu, alt;
-	fd = fileno(stdin);
-	tcgetattr(fd, &alt);
-	neu = alt;
-	neu.c_lflag &= ~(ICANON|ECHO);
-	tcsetattr(fd, TCSANOW, &neu);
-	ch = getchar();
-	tcsetattr(fd, TCSANOW, &alt);
+	int ch = '\0';
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		return 'a';
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		return 'd';
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		return 'w';
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		return 's';
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
+		return 'o';
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+		return 'p';
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
+		return '0';
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+		return '\n';
+
 	return ch;
 }
 
