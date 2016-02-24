@@ -1,6 +1,7 @@
 #ifndef SCREENBUFFER_H
 #define SCREENBUFFER_H
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 class ScreenBuffer
 {
@@ -9,6 +10,8 @@ private:
 	const int m_BufferWidth;
 	// Store the chars which get drawn in drawToScreen method
 	char **m_screenBuffer;
+	
+	sf::RenderWindow m_window;
 
 public:
 	ScreenBuffer(const int screenWidth, const int screenHeight);
@@ -25,7 +28,7 @@ public:
 	
 	void clear();
 
-	void drawToScreen() const;
+	void drawToScreen();
 
 private:
 

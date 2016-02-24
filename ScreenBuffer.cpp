@@ -8,7 +8,8 @@ ScreenBuffer::ScreenBuffer(const int screenWidth, const int screenHeight):
 m_BufferHeight(screenHeight),
 m_BufferWidth(screenWidth),
 // Allocate the memory for the 2d array
-m_screenBuffer(new char *[m_BufferHeight])
+m_screenBuffer(new char *[m_BufferHeight]),
+m_window(sf::VideoMode(800, 600), "Quadris SFML")
 {
 	for (int i = 0; i != m_BufferHeight; i++)
 	{
@@ -66,8 +67,11 @@ void ScreenBuffer::clear()
 	}
 }
 
-void ScreenBuffer::drawToScreen() const
+void ScreenBuffer::drawToScreen() 
 {
+	m_window.clear();
+	m_window.display();
+	/*
 	for (int y = 0; y != m_BufferHeight; y++)
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
@@ -76,6 +80,7 @@ void ScreenBuffer::drawToScreen() const
 		}	
 		cout << endl;
 	}
+	*/
 }
 
 bool ScreenBuffer::isInBufferArea(const int X, const int Y) const
