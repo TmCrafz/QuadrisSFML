@@ -9,7 +9,9 @@ m_BufferHeight(screenHeight),
 m_BufferWidth(screenWidth),
 // Allocate the memory for the 2d array
 m_screenBuffer(new char *[m_BufferHeight]),
-m_window(sf::VideoMode(800, 600), "Quadris SFML")
+// In the Terminal the height of a row is more then a field is wide,
+// so we have to increase the height
+m_window(sf::VideoMode(/*800, 600*/screenWidth * 10, (screenHeight * 10) * 2) , "Quadris SFML")
 {
 	for (int i = 0; i != m_BufferHeight; i++)
 	{
@@ -71,7 +73,6 @@ void ScreenBuffer::clear()
 void ScreenBuffer::drawToScreen() 
 {
 	m_window.display();
-	
 	for (int y = 0; y != m_BufferHeight; y++)
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
