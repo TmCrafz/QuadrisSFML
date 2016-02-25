@@ -21,12 +21,18 @@ void InputHelper::handleEvents(sf::RenderWindow *window)
 			window->close();
 			break;
 		case sf::Event::TextEntered:
+			cout << "Enterd Text unicode: " << event.text.unicode << endl;
 			m_input = static_cast<char>(event.text.unicode);
 			// If the player press the backspace (enter key)
 			// handle it like a next line in terminal
 			if (m_input == 13)
 			{
 				m_input = '\n';
+			}
+			// Handle a backspace press as Delete
+			else if (m_input == 8)
+			{
+				m_input = 127;			
 			}
 			break;		
 		case sf::Event::KeyPressed:
