@@ -58,6 +58,7 @@ void ScreenBuffer::add(const int StartX, const int StartY, const string Text)
 
 void ScreenBuffer::clear()
 {
+	m_window.clear();
 	for (int y = 0; y != m_BufferHeight; y++)
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
@@ -69,7 +70,6 @@ void ScreenBuffer::clear()
 
 void ScreenBuffer::drawToScreen() 
 {
-	m_window.clear();
 	m_window.display();
 	
 	for (int y = 0; y != m_BufferHeight; y++)
