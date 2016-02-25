@@ -83,9 +83,15 @@ void ScreenBuffer::drawToScreen()
 	
 }
 
+sf::RenderWindow * ScreenBuffer::getWindow()
+{
+	return &m_window;
+}
+
 bool ScreenBuffer::isInBufferArea(const int X, const int Y) const
 {
 	return (X >= 0 && X < m_BufferWidth && Y >= 0 && Y < m_BufferHeight);
 }
+
 
 #endif // !SCREENBUFFER_CPP

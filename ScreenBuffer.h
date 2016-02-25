@@ -30,6 +30,8 @@ public:
 
 	void drawToScreen();
 
+	sf::RenderWindow * getWindow();
+
 private:
 
 	// Only true when the position is in screen area

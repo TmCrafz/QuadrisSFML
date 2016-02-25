@@ -8,33 +8,42 @@
 
 using namespace std;
 
-int InputHelper::isKeyPressed()
+void InputHelper::handleEvents(sf::RenderWindow *window)
 {
-	return 1;
+	m_input = '\0';
+	sf::Event event;
+	while(window->pollEvent(event))
+	{
+		switch(event.type)
+		{
+		case sf::Event::Closed:
+			m_input = 'c';
+			window->close();
+			break;
+		case sf::Event::TextEntered:
+			m_input = static_cast<char>(event.text.unicode);
+			// If the player press the backspace (enter key)
+			// handle it like a next line in terminal
+			if (m_input == 13)
+			{
+				m_input = '\n';
+			}
+			break;		
+		case sf::Event::KeyPressed:
+			break;
+		}
+
+	}
 }
 
-// TMP
+int InputHelper::isKeyPressed()
+{	
+	return m_input != '\0';
+}
+
 int InputHelper::getInputChar()
 {
-	int ch = '\0';
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		return 'a';
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		return 'd';
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		return 'w';
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		return 's';
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
-		return 'o';
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
-		return 'p';
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0))
-		return '0';
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-		return '\n';
-
-	return ch;
+	return m_input;
 }
 
 #endif // !INPUTHELPER_CPP

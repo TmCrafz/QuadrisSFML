@@ -1,12 +1,18 @@
 #ifndef SCREEN_H
 #define SCREEN_H
+#include "InputHelper.h"
 #include "ScreenBuffer.h"
 
 class Screen
 {
+private:
+	// Handle input like events
+	InputHelper m_inputHelper;
+
 protected:
 	// Store the chars which get drawn to screen
-	ScreenBuffer *m_screenBuffer;	
+	ScreenBuffer *m_screenBuffer;
+	
 	char m_command;
 	bool m_running;
 	// Is true when something has changed, which make it necessary to redraw the Screen

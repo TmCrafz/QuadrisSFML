@@ -4,11 +4,15 @@
 
 class InputHelper
 {
+private:
+	char m_input;	
 public:
-
-	static int isKeyPressed();
 	
-	static int getInputChar();
+	void handleEvents(sf::RenderWindow *window);
+
+	int isKeyPressed();
+	
+	int getInputChar();
 };
 
 #endif // !INPUTHELPER

@@ -3,12 +3,12 @@
 #include <iostream>
 #include "Screen.h"
 #include "WorldConstants.h"
-#include "InputHelper.h"
 
 using namespace std;
 using namespace world_constants;
 
 Screen::Screen(ScreenBuffer *screenBuffer):
+m_inputHelper(),
 m_screenBuffer(screenBuffer),
 m_command('\0'),
 m_running(true),
@@ -21,6 +21,7 @@ void Screen::run()
 {
 	while(m_running)
 	{
+		m_inputHelper.handleEvents(m_screenBuffer->getWindow());
 		checkInput();
 		handleInput();
 		update();
@@ -34,9 +35,9 @@ void Screen::run()
 void Screen::checkInput()
 {
 	m_command = '\0';
-	if (InputHelper::isKeyPressed())
+	if (m_inputHelper.isKeyPressed())
 	{
-		m_command = InputHelper::getInputChar();
+		m_command = m_inputHelper.getInputChar();
 		if (m_command == 'c' && m_handleScreenClosing)
 		{
 			m_running = false;
