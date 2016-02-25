@@ -60,7 +60,7 @@ void ScreenBuffer::add(const int StartX, const int StartY, const string Text)
 
 void ScreenBuffer::clear()
 {
-	m_window.clear();
+	m_window.clear(sf::Color::Black);
 	for (int y = 0; y != m_BufferHeight; y++)
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
