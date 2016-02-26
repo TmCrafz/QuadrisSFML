@@ -12,6 +12,10 @@ private:
 	char **m_screenBuffer;
 	
 	sf::RenderWindow m_window;
+	
+	sf::Font m_font;
+	sf::Text m_text;
+
 
 public:
 	ScreenBuffer(const int screenWidth, const int screenHeight);

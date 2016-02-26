@@ -17,6 +17,14 @@ m_window(sf::VideoMode(/*800, 600*/screenWidth * 10, (screenHeight * 10) * 2) , 
 	{
 		m_screenBuffer[i] = new char[m_BufferWidth];	
 	}
+	if (!m_font.loadFromFile("Fonts/UbuntuMono-R.ttf"))
+	{
+		cout << "Error cannot load Font" << endl;
+	}
+	m_text.setFont(m_font);
+	m_text.setCharacterSize(20);
+	m_text.setColor(sf::Color::White);
+
 }
 
 ScreenBuffer::~ScreenBuffer()
@@ -72,15 +80,18 @@ void ScreenBuffer::clear()
 
 void ScreenBuffer::display() 
 {
-	m_window.display();
 	for (int y = 0; y != m_BufferHeight; y++)
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
 		{
 			cout << m_screenBuffer[y][x];
+			m_text.setPosition(x * 10, y * 20);
+			m_text.setString(m_screenBuffer[y][x]);
+			m_window.draw(m_text);
 		}	
 		cout << endl;
 	}
+	m_window.display();
 	
 }
 
