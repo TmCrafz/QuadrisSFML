@@ -70,7 +70,7 @@ void ScreenBuffer::clear()
 	}
 }
 
-void ScreenBuffer::drawToScreen() 
+void ScreenBuffer::display() 
 {
 	m_window.display();
 	for (int y = 0; y != m_BufferHeight; y++)

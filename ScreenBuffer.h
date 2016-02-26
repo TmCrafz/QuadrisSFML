@@ -27,8 +27,9 @@ public:
 	void add(const int StartX, const int StartY, const std::string Text);
 	
 	void clear();
-
-	void drawToScreen();
+	
+	// Display all drawn things on Screen
+	void display();
 
 	sf::RenderWindow * getWindow();
 
