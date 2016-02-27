@@ -85,7 +85,6 @@ void ScreenBuffer::display()
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
 		{
-			cout << m_screenBuffer[y][x];
 			m_text.setPosition(x * 10, y * 20);
 			m_text.setString(m_screenBuffer[y][x]);
 			m_window.draw(m_text);

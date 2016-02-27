@@ -105,7 +105,6 @@ void InputHelper::handleEvents(sf::RenderWindow *window)
 			// Do nothing
 			break;
 		case sf::Event::TextEntered:
-			cout << "Enterd Text unicode: " << event.text.unicode << endl;
 			m_input = static_cast<char>(event.text.unicode);
 			// If the player press the backspace (enter key)
 			// handle it like a next line in terminal
