@@ -8,6 +8,12 @@
 
 using namespace std;
 
+InputHelper::InputHelper():
+m_input('\0'),
+m_pausedByPlayer(false)
+{
+}
+
 void InputHelper::handleEvents(sf::RenderWindow *window)
 {
 	m_input = '\0';
@@ -20,11 +26,88 @@ void InputHelper::handleEvents(sf::RenderWindow *window)
 			m_input = 'c';
 			window->close();
 			break;
+		case sf::Event::Resized:
+			// Do nothing
+			break;
+		case sf::Event::LostFocus:
+			// Pause Game when lost focus, but only when the game is not allready
+			// paused by the player
+			if (!m_pausedByPlayer)
+			{
+				m_input = '0';
+			}
+			break;
+		case sf::Event::GainedFocus:
+			// Only stop pausing when the game is not paused by player input,
+			// only when paused by losing window focus
+			if (!m_pausedByPlayer)
+			{
+				m_input = '0';
+			}
+			break;
+		case sf::Event::KeyReleased:
+			// Do nothing
+			break;
+		case sf::Event::MouseWheelMoved:
+			// Do nothing
+			break;
+		case sf::Event::MouseWheelScrolled:
+			// Do nothing
+			break;
+		case sf::Event::MouseButtonPressed:
+			// Do nothing
+			break;
+		case sf::Event::MouseButtonReleased:
+			// Do nothing
+			break;
+		case sf::Event::MouseMoved:
+			// Do nothing
+			break;
+		case sf::Event::MouseEntered:
+			// Do nothing
+			break;
+		case sf::Event::MouseLeft:
+			// Do nothing
+			break;
+		case sf::Event::JoystickButtonPressed:
+			// Do nothing
+			break;
+		case sf::Event::JoystickButtonReleased:
+			// Do nothing
+			break;
+		case sf::Event::JoystickMoved:
+			// Do nothing
+			break;
+		case sf::Event::JoystickConnected:
+			// Do nothing
+			break;
+		case sf::Event::JoystickDisconnected:
+			// Do nothing
+			break;
+		case sf::Event::TouchBegan:
+			// Do nothing
+			break;
+		case sf::Event::TouchMoved:
+			// Do nothing
+			break;
+		case sf::Event::TouchEnded:
+			// Do nothing
+			break;
+		case sf::Event::SensorChanged:
+			// Do nothing
+			break;
+		case sf::Event::Count:
+			// Do nothing
+			break;
 		case sf::Event::TextEntered:
 			cout << "Enterd Text unicode: " << event.text.unicode << endl;
 			m_input = static_cast<char>(event.text.unicode);
 			// If the player press the backspace (enter key)
 			// handle it like a next line in terminal
+			if (m_input == '0')
+			{
+				m_pausedByPlayer = !m_pausedByPlayer; 
+			}
 			if (m_input == 13)
 			{
 				m_input = '\n';
