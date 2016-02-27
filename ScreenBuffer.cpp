@@ -12,7 +12,8 @@ m_screenBuffer(new char *[m_BufferHeight]),
 // In the Terminal the height of a row is more then a field is wide,
 // so we have to increase the height
 m_window(sf::VideoMode(/*800, 600*/screenWidth * 10, (screenHeight * 10) * 2) , "Quadris", 
-		sf::Style::Titlebar | sf::Style::Close)
+		sf::Style::Titlebar | sf::Style::Close),
+m_backgroundColor(sf::Color::Black)
 {
 	for (int i = 0; i != m_BufferHeight; i++)
 	{
@@ -67,9 +68,23 @@ void ScreenBuffer::add(const int StartX, const int StartY, const string Text)
 	}
 }
 
+void ScreenBuffer::changeBackground()
+{
+	if (m_backgroundColor == sf::Color::Black)
+	{
+		m_backgroundColor = sf::Color(44,0,30,0);
+	}
+	else
+	{
+		m_backgroundColor = sf::Color::Black;
+	}
+}
+
 void ScreenBuffer::clear()
 {
-	m_window.clear(sf::Color::Black);
+	//m_window.clear(sf::Color(44,0,30,0));
+	//m_window.clear(sf::Color::Black);
+	m_window.clear(m_backgroundColor);
 	for (int y = 0; y != m_BufferHeight; y++)
 	{
 		for (int x = 0; x != m_BufferWidth; x++)
@@ -89,7 +104,6 @@ void ScreenBuffer::display()
 			m_text.setString(m_screenBuffer[y][x]);
 			m_window.draw(m_text);
 		}	
-		cout << endl;
 	}
 	m_window.display();
 	

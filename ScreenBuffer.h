@@ -13,6 +13,8 @@ private:
 	
 	sf::RenderWindow m_window;
 	
+	sf::Color m_backgroundColor;
+
 	sf::Font m_font;
 	sf::Text m_text;
 
@@ -21,7 +23,7 @@ public:
 	ScreenBuffer(const int screenWidth, const int screenHeight);
 
 	~ScreenBuffer();
-	
+		
 	int getHeight() const;
 
 	int getWidth() const;
@@ -29,7 +31,9 @@ public:
 	void add(const int X, const int Y, const char C);
 
 	void add(const int StartX, const int StartY, const std::string Text);
-	
+		
+	void changeBackground();
+
 	void clear();
 	
 	// Display all drawn things on Screen

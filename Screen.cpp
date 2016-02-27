@@ -42,6 +42,12 @@ void Screen::checkInput()
 		{
 			m_running = false;
 		}
+		// Change Background Color
+		if (m_command == '#')
+		{
+			m_screenBuffer->changeBackground();
+			m_draw = true;
+		}
 	}
 }
 
