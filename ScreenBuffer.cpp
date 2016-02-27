@@ -11,7 +11,8 @@ m_BufferWidth(screenWidth),
 m_screenBuffer(new char *[m_BufferHeight]),
 // In the Terminal the height of a row is more then a field is wide,
 // so we have to increase the height
-m_window(sf::VideoMode(/*800, 600*/screenWidth * 10, (screenHeight * 10) * 2) , "Quadris SFML")
+m_window(sf::VideoMode(/*800, 600*/screenWidth * 10, (screenHeight * 10) * 2) , "Quadris", 
+		sf::Style::Titlebar | sf::Style::Close)
 {
 	for (int i = 0; i != m_BufferHeight; i++)
 	{

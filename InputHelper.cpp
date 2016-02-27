@@ -27,8 +27,13 @@ void InputHelper::handleEvents(sf::RenderWindow *window)
 			window->close();
 			break;
 		case sf::Event::Resized:
+			{
 			// Do nothing
+			//float width = window->getSize().x;
+			//float height = window->getSize().y;
+			//window->setView(sf::View(sf::FloatRect(0, 0, width, height))); 
 			break;
+			}
 		case sf::Event::LostFocus:
 			// Pause Game when lost focus, but only when the game is not allready
 			// paused by the player
