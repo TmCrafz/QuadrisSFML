@@ -23,7 +23,7 @@ m_backgroundColor(sf::Color::Black)
 	}
 	m_text.setFont(m_font);
 	m_text.setCharacterSize(20);
-	m_text.setColor(sf::Color::White);
+	m_text.setFillColor(sf::Color::White);
 
 }
 
