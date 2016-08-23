@@ -1,7 +1,3 @@
-#ifndef INPUTHELPER_CPP
-#define INPUTHELPER_CPP
-
-#include <termios.h>
 #include <iostream>
 #include <cstring>
 #include "InputHelper.h"
@@ -138,5 +134,3 @@ int InputHelper::getInputChar()
 {
 	return m_input;
 }
-
-#endif // !INPUTHELPER_CPP
