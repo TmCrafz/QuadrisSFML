@@ -7,7 +7,7 @@ QuadrisSFML is a SFML port of the tetris clone "QuadrisTerminal" which runs in a
 ### Menu
 - [W] Move Up
 - [S] Move Down
-- [Retrun] Select
+- [Return] Select
 
 ### Game
 - [A] Move Left
